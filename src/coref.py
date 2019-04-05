@@ -200,7 +200,7 @@ class DocumentEncoder(nn.Module):
 
         # Embed document
         embeds = [self.embed(s) for s in doc.sents]
-        print('embeds', embeds)
+        print('embeds', embeds.shape)
 
         # Batch for LSTM
         packed, reorder = pack(embeds)
