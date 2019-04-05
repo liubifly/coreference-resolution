@@ -622,11 +622,11 @@ class Trainer:
             for i1, i2 in cluster:
 
                 if i1 == i2:
-                    token_tags[i1].append(f'({idx})')
+                    token_tags[i1].append('({})', idx)
 
                 else:
-                    token_tags[i1].append(f'({idx}')
-                    token_tags[i2].append(f'{idx})')
+                    token_tags[i1].append('({})', idx)
+                    token_tags[i2].append('({})', idx)
 
         doc.tags = ['|'.join(t) if t else '-' for t in token_tags]
 
