@@ -482,7 +482,6 @@ class Trainer:
 
             # Randomly truncate document to up to 50 sentences
             doc = document.truncate()
-            print('doc for each batch', doc)
 
             # Compute loss, number gold links found, total gold links
             loss, mentions_found, total_mentions, \
@@ -518,6 +517,7 @@ class Trainer:
         # Init metrics
         mentions_found, corefs_found, corefs_chosen = 0, 0, 0
 
+        print('document', document)
         # Predict coref probabilites for each span in a document
         spans, probs = self.model(document)
 
