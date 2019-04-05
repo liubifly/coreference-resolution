@@ -200,6 +200,7 @@ class DocumentEncoder(nn.Module):
 
         # Embed document
         embeds = [self.embed(s) for s in doc.sents]
+        print('embeds', embeds)
 
         # Batch for LSTM
         packed, reorder = pack(embeds)
@@ -420,9 +421,7 @@ class CorefScore(nn.Module):
             Predict pairwise coreference scores
         """
         # Encode the document, keep the LSTM hidden states and embedded tokens
-        print('hah')
         states, embeds = self.encoder(doc)
-        print('embeds', embeds.shape)
 
         # Get mention scores for each span, prune
         spans, g_i, mention_scores = self.score_spans(states, embeds, doc)
