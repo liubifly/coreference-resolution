@@ -205,13 +205,13 @@ class DocumentEncoder(nn.Module):
         packed, reorder = pack(embeds)
 
         # Apply embedding dropout
-        self.emb_dropout(packed[0])
+        # self.emb_dropout(packed[0])
 
         # Pass an LSTM over the embeds
         output, _ = self.lstm(packed)
 
         # Apply dropout
-        self.lstm_dropout(output[0])
+        # self.lstm_dropout(output[0])
 
         # Undo the packing/padding required for batching
         states = unpack_and_unpad(output, reorder)
