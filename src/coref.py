@@ -200,7 +200,6 @@ class DocumentEncoder(nn.Module):
 
         # Embed document
         embeds = [self.embed(s) for s in doc.sents]
-        print('embeds', embeds)
 
         # Batch for LSTM
         packed, reorder = pack(embeds)
@@ -483,7 +482,8 @@ class Trainer:
 
             # Randomly truncate document to up to 50 sentences
             doc = document.truncate()
-            print('doc for each batch', doc.sents)
+            if len(doc.sents) == 0:
+                continue
 
             # Compute loss, number gold links found, total gold links
             loss, mentions_found, total_mentions, \
