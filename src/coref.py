@@ -482,6 +482,7 @@ class Trainer:
 
             # Randomly truncate document to up to 50 sentences
             doc = document.truncate()
+            print('doc for each batch', doc)
 
             # Compute loss, number gold links found, total gold links
             loss, mentions_found, total_mentions, \
@@ -549,7 +550,6 @@ class Trainer:
         # Negative marginal log-likelihood
         eps = 1e-8
         loss = torch.sum(torch.log(torch.sum(torch.mul(probs, gold_indexes), dim=1).clamp_(eps, 1-eps)) * -1)
-        print('loss', loss)
 
         # Backpropagate
         loss.backward()
