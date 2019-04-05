@@ -332,5 +332,5 @@ GLOVE = LazyVectors.from_corpus(train_corpus.vocab,
                                 cache='../.vector_cache/')
 
 TURIAN = LazyVectors.from_corpus(train_corpus.vocab,
-                                 name='hlbl-embeddings-scaled.EMBEDDING_SIZE=50',
+                                 name='../data/hlbl-embeddings-scaled.EMBEDDING_SIZE=50',
                                  cache='../.vector_cache/')
