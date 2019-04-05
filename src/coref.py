@@ -200,7 +200,6 @@ class DocumentEncoder(nn.Module):
 
         # Embed document
         embeds = [self.embed(s) for s in doc.sents]
-        print('embeds', embeds.shape)
 
         # Batch for LSTM
         packed, reorder = pack(embeds)
@@ -550,6 +549,7 @@ class Trainer:
         # Negative marginal log-likelihood
         eps = 1e-8
         loss = torch.sum(torch.log(torch.sum(torch.mul(probs, gold_indexes), dim=1).clamp_(eps, 1-eps)) * -1)
+        print('loss', loss)
 
         # Backpropagate
         loss.backward()
