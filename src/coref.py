@@ -566,7 +566,13 @@ class Trainer:
 
         # Predict files
         print('Evaluating on validation corpus...')
-        predicted_docs = [self.predict(doc) for doc in tqdm(val_corpus)]
+        predicted_docs = []
+        for doc in tqdm(val_corpus):
+            if len(doc.sents) == 0:
+                continue
+            predicted_docs.append(self.predict(doc))
+
+        # predicted_docs = [self.predict(doc) for doc in tqdm(val_corpus)]
         val_corpus.docs = predicted_docs
 
         # Output results
